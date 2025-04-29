@@ -1,0 +1,25 @@
+{
+  "name": "taskify",
+  "version": "1.0.0",
+  "description": "Simple ToDo App with NestJS, MongoDB, ELK",
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main.js",
+    "build": "nest build"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/mongoose": "^10.0.0",
+    "@nestjs/platform-express": "^10.2.6",
+    "mongoose": "^7.0.0",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "@nestjs/testing": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}
