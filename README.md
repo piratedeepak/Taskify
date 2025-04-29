@@ -69,7 +69,7 @@ Make sure you have:
 ```bash
 git clone https://github.com/your-username/taskify.git
 cd taskify
-docker-compose up --build
+docker compose -f docker-compose.yml up --build
 ```
 
 The following services will start:
@@ -175,7 +175,7 @@ curl -X PUT http://localhost:3000/tasks/<id>   -H "Content-Type: application/jso
 To stop the containers:
 
 ```bash
-docker-compose down
+docker compose -f docker-compose.yml down
 ```
 
 To remove all Docker volumes:
