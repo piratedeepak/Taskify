@@ -2,23 +2,24 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Task, TaskDocument } from './task.schema';
+import { taskLogger } from '../logger';
 
 @Injectable()
 export class TaskService {
-  private readonly logger = new Logger('TaskService');
+  private readonly logger = taskLogger;
 
   constructor(@InjectModel(Task.name) private taskModel: Model<TaskDocument>) {}
 
   async create(taskData: Partial<Task>): Promise<Task> {
     const task = new this.taskModel(taskData);
     const created = await task.save();
-    this.logger.log(JSON.stringify({ event: 'create', taskId: created._id, title: created.title }));
+    this.logger.info({ event: 'create', taskId: created._id, title: created.title, timestamp: new Date().toISOString() });
     return created;
   }
 
   async findAll(): Promise<Task[]> {
     const tasks = await this.taskModel.find().exec();
-    this.logger.log(JSON.stringify({ event: 'findAll', count: tasks.length }));
+    this.logger.info(JSON.stringify({ event: 'findAll', count: tasks.length }));
     return tasks;
   }
 
